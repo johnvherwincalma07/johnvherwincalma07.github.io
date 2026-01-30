@@ -1,4 +1,4 @@
-// Animate skill bars
+/* SKILL ANIMATION */
 const bars = document.querySelectorAll('.bar div');
 let animated = false;
 
@@ -14,9 +14,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// GitHub Projects
+
 const grid = document.getElementById('projectGrid');
-const username = "johnvherwincalma07"; // Your GitHub username
+const username = "your-github-username"; // CHANGE THIS
 
 fetch(`https://api.github.com/users/${username}/repos`)
 .then(res => res.json())
@@ -31,7 +31,7 @@ fetch(`https://api.github.com/users/${username}/repos`)
     });
 });
 
-// Modal
+/* MODAL */
 function openModal(title, desc, img) {
     document.getElementById('modalTitle').innerText = title;
     document.getElementById('modalDesc').innerText = desc;
