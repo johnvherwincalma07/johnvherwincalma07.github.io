@@ -1,48 +1,44 @@
 // Animate skill bars
-const skills = document.querySelectorAll('.skill-fill');
+const bars = document.querySelectorAll('.bar div');
+let animated = false;
+
 window.addEventListener('scroll', () => {
-    skills.forEach(skill => {
-        const skillTop = skill.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if(skillTop < windowHeight - 50){
-            skill.style.width = skill.dataset.skill;
-        }
+    const skillSection = document.getElementById('skills');
+    const top = skillSection.getBoundingClientRect().top;
+
+    if (top < window.innerHeight && !animated) {
+        bars.forEach(bar => {
+            bar.style.width = bar.dataset.level + '%';
+        });
+        animated = true;
+    }
+});
+
+// GitHub Projects
+const grid = document.getElementById('projectGrid');
+const username = "johnvherwincalma07"; // Your GitHub username
+
+fetch(`https://api.github.com/users/${username}/repos`)
+.then(res => res.json())
+.then(repos => {
+    repos.slice(0,6).forEach((repo, i) => {
+        grid.innerHTML += `
+            <div class="project-card" onclick="openModal('${repo.name}','${repo.description || 'No description'}','project${i+1}.jpg')">
+                <h3>${repo.name}</h3>
+                <p>${repo.description || 'No description available'}</p>
+            </div>
+        `;
     });
 });
 
-// Project Modals
-const projects = {
-    1: {
-        title: "Project One",
-        desc: "Description of project one...",
-        img: "images/project1.png"
-    },
-    2: {
-        title: "Project Two",
-        desc: "Description of project two...",
-        img: "images/project2.png"
-    }
+// Modal
+function openModal(title, desc, img) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDesc').innerText = desc;
+    document.getElementById('modalImg').src = 'assets/' + img;
+    document.getElementById('modal').style.display = 'block';
 }
 
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modal-title');
-const modalDesc = document.getElementById('modal-desc');
-const modalImg = document.getElementById('modal-img');
-
-function openModal(id){
-    modal.style.display = 'flex';
-    modalTitle.innerText = projects[id].title;
-    modalDesc.innerText = projects[id].desc;
-    modalImg.src = projects[id].img;
-}
-
-function closeModal(){
-    modal.style.display = 'none';
-}
-
-// Close modal on outside click
-window.onclick = function(e){
-    if(e.target === modal){
-        modal.style.display = 'none';
-    }
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
 }
