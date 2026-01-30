@@ -1,3 +1,20 @@
+/* ==========================
+   VARIABLES
+========================== */
+:root {
+    --primary-color: #0072ff;
+    --secondary-color: #00c6ff;
+    --dark-bg: #111;
+    --dark-bg-alt: #1e1e1e;
+    --light-bg: #f5f7fb;
+    --text-color: #333;
+    --text-light: #fff;
+    --footer-color: #000;
+}
+
+/* ==========================
+   GLOBAL
+========================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,14 +23,27 @@
 }
 
 body {
-    background: #f5f7fb;
-    color: #333;
+    background: var(--light-bg);
+    color: var(--text-color);
+    scroll-behavior: smooth;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================
+   HEADER & NAVBAR
+========================== */
 header {
     position: fixed;
     width: 100%;
-    background: #111;
+    background: var(--dark-bg);
     z-index: 1000;
 }
 
@@ -21,123 +51,168 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 15px 50px;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #00c6ff;
+    color: var(--secondary-color);
 }
 
 .profile-icon {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
 }
 
 .navbar ul {
-    list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 .navbar a {
-    color: #fff;
-    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
     transition: 0.3s;
 }
 
 .navbar a:hover {
-    color: #00c6ff;
+    color: var(--secondary-color);
 }
 
-/* HERO */
+/* ==========================
+   HERO SECTION
+========================== */
 .hero {
     height: 100vh;
-    background: linear-gradient(120deg, #0072ff, #00c6ff);
+    background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 70px;
-    color: #fff;
+    padding-top: 80px;
+    color: var(--text-light);
 }
 
 .hero h1 {
     font-size: 3rem;
+    margin-top: 10px;
+}
+
+.hero h2 {
+    font-weight: 300;
+}
+
+.hero p {
+    margin: 15px 0;
+    font-size: 1.2rem;
 }
 
 .hero-buttons {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .btn {
     padding: 12px 28px;
-    background: #111;
-    color: #fff;
     border-radius: 30px;
-    text-decoration: none;
-    margin: 5px;
+    font-weight: 500;
     transition: 0.3s;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
 }
 
 .btn:hover {
-    background: #00c6ff;
-    color: #111;
+    transform: translateY(-3px);
+}
+
+.btn {
+    background: var(--dark-bg);
+    color: var(--text-light);
 }
 
 .btn.outline {
     background: transparent;
-    border: 2px solid #fff;
+    border: 2px solid var(--text-light);
 }
 
-/* SECTIONS */
+.btn.outline:hover {
+    background: var(--secondary-color);
+    color: var(--dark-bg);
+}
+
+/* ==========================
+   SECTION COMMON
+========================== */
 .section {
-    padding: 80px 40px;
+    padding: 80px 50px;
     text-align: center;
 }
 
 .dark {
-    background: #111;
-    color: #fff;
+    background: var(--dark-bg);
+    color: var(--text-light);
 }
 
 .title {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
-/* PROJECTS */
+/* ==========================
+   PROJECTS
+========================== */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .project-card {
-    background: #fff;
+    background: var(--light-bg);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .dark .project-card {
-    background: #1e1e1e;
+    background: var(--dark-bg-alt);
+}
+
+.project-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: #555;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-/* SKILLS */
+/* ==========================
+   SKILLS
+========================== */
 .skill {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 25px auto;
     text-align: left;
+}
+
+.skill span {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
 }
 
 .bar {
@@ -147,43 +222,87 @@ header {
 }
 
 .bar div {
-    height: 12px;
+    height: 14px;
     width: 0;
-    background: linear-gradient(to right, #0072ff, #00c6ff);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     transition: width 1.5s ease;
 }
 
-/* FOOTER */
+/* ==========================
+   CONTACT
+========================== */
+#contact a {
+    color: var(--secondary-color);
+    transition: 0.3s;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================
+   FOOTER
+========================== */
 footer {
-    padding: 20px;
-    background: #000;
+    padding: 25px;
+    background: var(--footer-color);
     color: #aaa;
     text-align: center;
 }
 
-/* MODAL */
+/* ==========================
+   MODAL
+========================== */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.8);
+    z-index: 2000;
 }
 
 .modal-box {
     background: #fff;
     max-width: 600px;
     margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
 }
 
 .modal img {
     width: 100%;
     margin-top: 15px;
+    border-radius: 8px;
 }
 
 .close {
-    float: right;
+    position: absolute;
+    right: 20px;
+    top: 20px;
     font-size: 22px;
     cursor: pointer;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 60px 25px;
+    }
 }
