@@ -308,3 +308,99 @@ footer {
     box-shadow: 0 6px 15px rgba(0, 114, 255, 0.3);
     transition: all 0.3s;
 }
+
+
+/* ================= REQUIREMENTS SECTION ================= */
+#requirements {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e5e7eb;
+}
+
+#requirements .title {
+    text-align: center;
+    font-size: 2.3rem;
+    margin-bottom: 50px;
+    color: #38bdf8;
+    letter-spacing: 1px;
+}
+
+.requirements-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* ===== CARD STYLE ===== */
+.requirement-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.35s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Hover effect */
+.requirement-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(56, 189, 248, 0.35);
+    border-color: rgba(56, 189, 248, 0.6);
+}
+
+/* ===== LEFT ICON AREA ===== */
+.requirement-item h3::before {
+    content: attr(data-icon);
+    font-size: 2.5rem;
+}
+
+/* Icon container */
+.requirement-item h3 {
+    min-width: 90px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #020617;
+    font-size: 2.2rem;
+}
+
+/* ===== RIGHT CONTENT AREA ===== */
+.requirement-item p {
+    padding: 25px;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e5e7eb;
+}
+
+/* Title text inside content */
+.requirement-item p strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    color: #7dd3fc;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .requirement-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .requirement-item h3 {
+        width: 100%;
+        min-height: 80px;
+    }
+
+    .requirement-item p {
+        padding: 20px;
+    }
+}
